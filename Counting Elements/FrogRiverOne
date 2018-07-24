@@ -1,0 +1,22 @@
+public class FrogRiverOne {
+    public static void main(String[] args) {
+        int[] a = {1, 3, 1, 5, 4, 7, 1, 6, 4};
+        System.out.println(solution(a, 4));
+    }
+
+
+    public static int solution(int [] a, int x) {
+        int [] counter = new int[x + 1];
+        int cnt = 0;
+        for (int i = 0; i < a.length; i++) {
+            if (counter[a[i]] == 0) {
+                counter[a[i]] = a[i];
+                cnt++;
+                if (cnt == x)
+                    return i;
+            }
+
+        }
+        return -1;
+    }
+}

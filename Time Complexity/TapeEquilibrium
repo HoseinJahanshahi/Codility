@@ -1,0 +1,38 @@
+
+
+public class TapeEquilibrium {
+    public static void main(String[] args) {
+        TapeEquilibrium t = new TapeEquilibrium();
+        int a[] = {1,9};
+        System.out.println(t.solution(a));
+    }
+
+
+    public int solution(int[] a) {
+        int b = a[0], sum = 0, sum2 = 0;
+        int arr1 [] = new int[a.length - 1];
+        int arr2 [] = new int[a.length - 1];
+        int arr3 [] = new int[a.length - 1];
+
+        for (int i = 0; i < a.length - 1; i++) {
+            sum += a[i];
+            arr1[i] = sum;
+        }
+
+        for (int i = a.length - 1; i > 0; i--) {
+            sum2 += a[i];
+            arr2[i - 1] = sum2;
+        }
+
+        for (int i = 0; i < arr1.length; i++){
+            arr3[i] = Math.abs(arr1[i] - arr2[i]);
+        }
+
+        int min = arr3[0];
+        for (int i = 0; i < arr3.length; i++){
+            if (min > arr3[i])
+                min = arr3[i];
+        }
+        return min;
+    }
+}

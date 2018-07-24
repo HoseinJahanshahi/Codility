@@ -1,0 +1,41 @@
+import java.util.Scanner;
+
+/**
+ * Created by Harengivardenierseas on 10/18/2017.
+ */
+public class BinaryGap {
+    public long solution(long n) {
+        int i;
+        long  a, cnt = 0, binarygab = 0;
+        String b = "";
+        if ( n % 2 == 0){
+            return 0;
+        }
+        for (i = 0; n > 0; i++) {
+            a = n % 2;
+            b += a;
+            n = n / 2;
+        }
+        for (i = 0; i < b.length(); i++){
+            if (b.charAt(i) == '0' ) {
+                cnt++;
+            }
+
+            if (b.charAt(i) == '1'){
+                if (cnt > binarygab){
+                    binarygab = cnt;
+                }
+                cnt = 0;
+            }
+
+        }
+        return binarygab;
+    }
+
+    public static void main(String[] args) {
+        BinaryGap b = new BinaryGap();
+        Scanner s = new Scanner(System.in);
+        long t = s.nextLong();
+        System.out.println(b.solution(t));
+    }
+}

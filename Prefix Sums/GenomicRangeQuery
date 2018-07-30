@@ -1,0 +1,62 @@
+//Not a good one!!
+public class GenomicRangeQuery {
+    public static void main(String[] args) {
+        GenomicRangeQuery g = new GenomicRangeQuery();
+        String s = "CAGCCTA";
+        int[] p = {2, 5, 0};
+        int[] q = {4, 5, 6};
+        int[] b = new int[p.length];
+        b = g.solution(s, p, q).clone();
+        for (int i = 0; i < b.length; i++) {
+            System.out.println(b[i] + " ");
+        }
+    }
+
+    public int[] solution(String s, int[] p, int[] q) {
+        int k = 0, min = 5, j;
+        int[] a = new int[4];
+        int[] b = new int[p.length];
+        
+        for (j = p[k]; j <= q[k];) {
+            if (s.charAt(j) == 'A') {
+                a[0] = 1;
+                if (min > a[0])
+                    min = a[0];
+            }
+            if (s.charAt(j) == 'C') {
+                a[1] = 2;
+                if (min > a[1])
+                    min = a[1];
+
+            }
+            if (s.charAt(j) == 'G') {
+                a[2] = 3;
+                if (min > a[2])
+                    min = a[2];
+
+            }
+            if (s.charAt(j) == 'T') {
+                a[3] = 4;
+                if (min > a[3])
+                    min = a[3];
+
+            }
+            j++;
+            if (j > q[k]) {
+                b[k] = min;
+                min = 5;
+                k++;
+                if (k == p.length)
+                    break;
+                j = p[k];
+            }
+        }
+        return b;
+    }
+}
+
+
+
+/*
+
+ */

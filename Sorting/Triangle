@@ -1,0 +1,21 @@
+import java.util.Arrays;
+class Solution {
+  public static int solution(int[] a) {
+        Arrays.sort(a);
+
+        int p = 0, q = 1, r = 2;
+
+        if (a.length < 3)
+            return 0;
+        for (int i = 2; i < a.length; i++) {
+            if (a[p] + a[q] > a[r])
+                return 1;
+            else {
+                p++;
+                q++;
+                r++;
+            }
+        }
+        return 0;
+    }
+}

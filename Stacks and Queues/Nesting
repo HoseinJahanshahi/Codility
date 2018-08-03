@@ -1,0 +1,28 @@
+import java.util.Stack;
+
+
+public class Nesting {
+    public static void main(String[] args) {
+
+    }
+
+
+    public int solution(String s) {
+        if (s.length() == 0)
+            return 1;
+        Stack<Character> p = new Stack<Character>();
+
+        for (int i = 0; i < s.length(); i++) {
+            if (s.charAt(i) == '(')
+                p.push('(');
+            else {
+                if (p.isEmpty() || p.peek() != '(')
+                    return 0;
+                else
+                    p.pop();
+            }
+        }
+
+        return p.isEmpty() ? 1 : 0;
+    }
+}

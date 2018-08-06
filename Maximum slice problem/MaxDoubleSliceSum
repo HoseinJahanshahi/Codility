@@ -1,0 +1,22 @@
+public class MaxDoubleSliceSum {
+    public static void main(String[] args) {
+        int a[] = {3, 2, 6, -1, 4, 5, -1, 2};
+        System.out.println(solution(a));
+    }
+
+
+    public static int solution(int[] a) {
+        int maxSlice;
+        int maxEnding = maxSlice = 0;
+        for (int i = 1; i < a.length - 1; i++) {
+            if (a[i] < 0)
+                continue;
+            maxEnding = Math.max(0, maxEnding + a[i]);
+            maxSlice = Math.max(maxSlice, maxEnding);
+        }
+        return maxSlice;
+    }
+}
+
+
+//Nope Npt Working

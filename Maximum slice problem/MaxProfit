@@ -13,13 +13,15 @@ public class MaxProfit {
     public static int solution(int[] a) {
         if (a.length < 2)
             return 0;
-        int maxProfit = 0, maxPrice= a[a.length - 1];
+        int maxProfit = 0, maxPrice = 0, test;
 
-        for (int i = 0; i < a.length; i++) {
-            maxProfit= Math.max(maxProfit, maxPrice - a[i]);
-            maxPrice = Math.max(a[i], maxPrice);
+        for (int i = 1; i < a.length; i++) {
+            test = a[i] - a[i - 1];
+            maxProfit = Math.max(0, maxProfit + test);
+            maxPrice = Math.max(maxProfit, maxPrice);
         }
-
-        return maxProfit;
+        if (maxPrice < 0)
+            return 0;
+        return maxPrice;
     }
 }

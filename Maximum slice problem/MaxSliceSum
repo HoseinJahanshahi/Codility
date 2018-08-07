@@ -1,0 +1,21 @@
+public class MaxSliceSum {
+    public static void main(String[] args) {
+
+        int a[] = {3,2,-6,4,0};
+        System.out.println(solution(a));
+    }
+
+
+    public static int solution(int [] a){
+        int maxSlice;
+        int maxEnding =-1000000;
+        maxSlice = -1000000;
+        for (int i = 0; i < a.length; i++) {
+            maxEnding = Math.max(a[i], maxEnding + a[i]);
+            maxSlice = Math.max(maxSlice, maxEnding);
+        }
+        return maxSlice;
+    }
+}
+
+

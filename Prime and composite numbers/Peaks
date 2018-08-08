@@ -1,0 +1,37 @@
+import java.util.ArrayList;
+
+public class Peaks {
+    public static void main(String[] args) {
+        int[] a = {1, 2, 3, 4, 3, 4, 1, 2, 3, 4, 6, 2};
+        System.out.println(solution(a));
+    }
+
+
+    public static int solution(int[] A) {
+        int N = A.length;
+
+
+        ArrayList<Integer> peaks = new ArrayList<Integer>();
+        for (int i = 1; i < N - 1; i++) {
+            if (A[i] > A[i - 1] && A[i] > A[i + 1]) peaks.add(i);
+        }
+
+        for (int i = 1; i <= N; i++) {
+            if (N % i != 0) continue;
+            int find = 0;
+            int groups = N / i;
+            boolean ok = true;
+
+            for (int peakIdx : peaks) {
+                if (peakIdx / i > find) {
+                    ok = false;
+                    break;
+                }
+                if (peakIdx / i == find) find++;
+            }
+            if (find != groups) ok = false;
+            if (ok) return groups;
+        }
+        return 0;
+    }
+}

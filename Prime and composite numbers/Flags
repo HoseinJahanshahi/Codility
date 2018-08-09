@@ -1,0 +1,72 @@
+import java.util.ArrayList;
+
+
+public class Flags {
+    public static void main(String[] args) {
+        int[] a = {1, 5, 3, 4, 3, 4, 1, 2, 3, 4, 6, 2};
+        System.out.println(solution(a));
+    }
+
+
+    public static int solution(int[] A) {
+        ArrayList<Integer> array = new ArrayList<>();
+        for (int i = 1; i < A.length - 1; i++) {
+            if (A[i-1]<A[i] && A[i+1]<A[i]) {
+                array.add(i);
+            }
+        }
+        if (array.size() == 1 || array.size() == 0) {
+            return array.size();
+        }
+
+        int flag = 1;
+        int result = 1;
+        while (flag <= array.size()) {
+            boolean success = false;
+            int used = 0;
+            int mark = array.get(0);
+            for (int i = 0; i < array.size(); i++) {
+                if (array.get(i) >= mark) {
+                    used++;
+                    mark = array.get(i) + flag;
+
+                    if (used == flag) {
+                        success = true;
+                        break;
+                    }
+                }
+            }
+
+            if (success) {
+                result = flag;
+                flag++;
+            }
+            else {
+                break;
+            }
+        }
+        return result;
+    }}
+
+
+/*
+        flags = 2;
+        for (i = 0; i < b.size() - 1; i++)
+            if (Math.abs(b.get(i) - b.get(i + 1)) < flags && !b.get(i).equals(s.peek())) {
+            s.push(b.get(i + 1));
+            flags++;
+        }
+        if (flags == b.size())
+        break;
+
+*/
+
+
+
+/*        for (flags = 2; flags < b.size(); flags++) {
+            for (i = 0; i < b.size() - 1; i++)
+                if (Math.abs(b.get(i) - b.get(i + 1)) < flags && !b.get(i).equals(s.peek())) {
+                    s.push(b.get(i + 1));
+                }
+        }
+*/
